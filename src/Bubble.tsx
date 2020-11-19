@@ -521,7 +521,7 @@ export default class Bubble<
             accessibilityTraits='text'
             {...this.props.touchableProps}
           >
-            <View>
+            <View testID='message'>
               {this.renderBubbleContent()}
               <View
                 style={[

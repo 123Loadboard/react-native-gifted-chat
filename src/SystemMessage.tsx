@@ -65,7 +65,9 @@ export default class SystemMessage<
       return (
         <View style={[styles.container, containerStyle]}>
           <View style={wrapperStyle}>
-            <Text style={[styles.text, textStyle]}>{currentMessage.text}</Text>
+            <Text testID='system_message' style={[styles.text, textStyle]}>
+              {currentMessage.text}
+            </Text>
           </View>
         </View>
       )

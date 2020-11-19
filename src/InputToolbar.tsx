@@ -154,6 +154,7 @@ export default class InputToolbar extends React.Component<
   render() {
     return (
       <View
+        testID='input_bar'
         style={
           [
             styles.container,

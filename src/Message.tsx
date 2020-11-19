@@ -176,7 +176,7 @@ export default class Message<
     if (currentMessage) {
       const sameUser = isSameUser(currentMessage, nextMessage!)
       return (
-        <View>
+        <View testID='message_item'>
           {this.renderDay()}
           {currentMessage.system ? (
             this.renderSystemMessage()
