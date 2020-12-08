@@ -9,6 +9,7 @@ import {
   ViewStyle,
   TextStyle,
   Clipboard,
+  Keyboard,
 } from 'react-native'
 
 // @ts-ignore
@@ -119,6 +120,7 @@ export default class MessageText<
   }
 
   onUrlPress = (url: string) =>{
+    Keyboard.dismiss()
     const options = DEFAULT_LINK_TITLES
     const cancelButtonIndex = options.length - 1
     // When someone sends a message that includes a website address beginning with "www." (omitting the scheme),
@@ -155,6 +157,7 @@ export default class MessageText<
   }
 
   onPhonePress = (phone: string) => {
+    Keyboard.dismiss()
     const { optionTitles } = this.props
     const options =
         optionTitles && optionTitles.length > 0
@@ -185,6 +188,7 @@ export default class MessageText<
   }
 
   onEmailPress = (email: string) =>{
+    Keyboard.dismiss()
     const options = DEFAULT_LINK_TITLES
     const cancelButtonIndex = options.length - 1
     this.context.actionSheet().showActionSheetWithOptions(

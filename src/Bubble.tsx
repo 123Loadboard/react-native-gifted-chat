@@ -9,6 +9,7 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
+  Keyboard,
 } from 'react-native'
 
 import QuickReplies from './QuickReplies'
@@ -103,7 +104,7 @@ const styles = {
   }),
 }
 
-const DEFAULT_OPTION_TITLES = ['Copy Text', 'Cancel']
+const DEFAULT_OPTION_TITLES = ['Copy text', 'Cancel']
 
 export type RenderMessageImageProps<TMessage extends IMessage> = Omit<
   BubbleProps<TMessage>,
@@ -247,6 +248,7 @@ export default class Bubble<
   }
 
   onLongPress = () => {
+    Keyboard.dismiss()
     const { currentMessage } = this.props
     if (this.props.onLongPress) {
       this.props.onLongPress(this.context, this.props.currentMessage)
