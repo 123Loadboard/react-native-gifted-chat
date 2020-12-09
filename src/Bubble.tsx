@@ -247,6 +247,12 @@ export default class Bubble<
     }),
   }
 
+  displayKeyboard = () => {
+    if (this.props.displayKeyboard) {
+      this.props.displayKeyboard()
+    }
+  }
+
   onLongPress = () => {
     Keyboard.dismiss()
     const { currentMessage } = this.props
@@ -268,6 +274,7 @@ export default class Bubble<
           switch (buttonIndex) {
             case 0:
               Clipboard.setString(currentMessage.text)
+              this.displayKeyboard()
               break
             default:
               break

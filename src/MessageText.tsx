@@ -119,6 +119,12 @@ export default class MessageText<
     )
   }
 
+  displayKeyboard = () => {
+    if (this.props.displayKeyboard) {
+      this.props.displayKeyboard()
+    }
+  }
+
   onUrlPress = (url: string) =>{
     Keyboard.dismiss()
     const options = DEFAULT_LINK_TITLES
@@ -137,6 +143,7 @@ export default class MessageText<
             switch (buttonIndex) {
               case 0:
                 Clipboard.setString(url)
+                this.displayKeyboard()
                 break
               case 1:
                 Linking.canOpenURL(url).then(supported => {
@@ -173,6 +180,7 @@ export default class MessageText<
           switch (buttonIndex) {
             case 0:
               Clipboard.setString(phone)
+              this.displayKeyboard()
               break
             case 1:
               Communications.phonecall(phone, true)
@@ -200,6 +208,7 @@ export default class MessageText<
           switch (buttonIndex) {
             case 0:
               Clipboard.setString(email)
+              this.displayKeyboard()
               break
             case 1:
               Communications.email([email], null, null, null, null)
