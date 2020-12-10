@@ -9,6 +9,7 @@ import {
   ViewStyle,
   TextStyle,
   Clipboard,
+  Keyboard,
 } from 'react-native'
 
 // @ts-ignore
@@ -118,7 +119,14 @@ export default class MessageText<
     )
   }
 
+  displayKeyboard = () => {
+    if (this.props.displayKeyboard) {
+      this.props.displayKeyboard()
+    }
+  }
+
   onUrlPress = (url: string) =>{
+    Keyboard.dismiss()
     const options = DEFAULT_LINK_TITLES
     const cancelButtonIndex = options.length - 1
     // When someone sends a message that includes a website address beginning with "www." (omitting the scheme),
@@ -135,6 +143,7 @@ export default class MessageText<
             switch (buttonIndex) {
               case 0:
                 Clipboard.setString(url)
+                this.displayKeyboard()
                 break
               case 1:
                 Linking.canOpenURL(url).then(supported => {
@@ -155,6 +164,7 @@ export default class MessageText<
   }
 
   onPhonePress = (phone: string) => {
+    Keyboard.dismiss()
     const { optionTitles } = this.props
     const options =
         optionTitles && optionTitles.length > 0
@@ -170,6 +180,7 @@ export default class MessageText<
           switch (buttonIndex) {
             case 0:
               Clipboard.setString(phone)
+              this.displayKeyboard()
               break
             case 1:
               Communications.phonecall(phone, true)
@@ -185,6 +196,7 @@ export default class MessageText<
   }
 
   onEmailPress = (email: string) =>{
+    Keyboard.dismiss()
     const options = DEFAULT_LINK_TITLES
     const cancelButtonIndex = options.length - 1
     this.context.actionSheet().showActionSheetWithOptions(
@@ -196,6 +208,7 @@ export default class MessageText<
           switch (buttonIndex) {
             case 0:
               Clipboard.setString(email)
+              this.displayKeyboard()
               break
             case 1:
               Communications.email([email], null, null, null, null)
