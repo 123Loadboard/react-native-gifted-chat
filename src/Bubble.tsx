@@ -174,6 +174,7 @@ export default class Bubble<
 
   static defaultProps = {
     touchableProps: {},
+    displayKeyboard: null,
     onLongPress: null,
     renderMessageImage: null,
     renderMessageVideo: null,
@@ -206,6 +207,7 @@ export default class Bubble<
   static propTypes = {
     user: PropTypes.object.isRequired,
     touchableProps: PropTypes.object,
+    displayKeyboard: PropTypes.func,
     onLongPress: PropTypes.func,
     renderMessageImage: PropTypes.func,
     renderMessageVideo: PropTypes.func,
