@@ -66,6 +66,7 @@ export interface MessageTextProps<TMessage extends IMessage> {
   linkStyle?: LeftRightStyle<TextStyle>
   textProps?: TextProps
   customTextStyle?: StyleProp<TextStyle>
+  displayKeyboard?(): void
   parsePatterns?(linkStyle: TextStyle): any
 }
 
@@ -87,6 +88,7 @@ export default class MessageText<
     linkStyle: {},
     customTextStyle: {},
     textProps: {},
+    displayKeyboard: null,
     parsePatterns: () => [],
   }
 
@@ -107,6 +109,7 @@ export default class MessageText<
       right: StylePropType,
     }),
     parsePatterns: PropTypes.func,
+    displayKeyboard: PropTypes.func,
     textProps: PropTypes.object,
     customTextStyle: StylePropType,
   }

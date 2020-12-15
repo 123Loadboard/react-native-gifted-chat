@@ -150,6 +150,7 @@ export interface BubbleProps<TMessage extends IMessage> {
   containerToPreviousStyle?: LeftRightStyle<ViewStyle>
   usernameStyle?: TextStyle
   quickReplyStyle?: StyleProp<ViewStyle>
+  displayKeyboard?(): void
   onLongPress?(context?: any, message?: any): void
   onQuickReply?(replies: Reply[]): void
   renderMessageImage?(props: RenderMessageImageProps<TMessage>): React.ReactNode
@@ -173,6 +174,7 @@ export default class Bubble<
 
   static defaultProps = {
     touchableProps: {},
+    displayKeyboard: null,
     onLongPress: null,
     renderMessageImage: null,
     renderMessageVideo: null,
@@ -205,6 +207,7 @@ export default class Bubble<
   static propTypes = {
     user: PropTypes.object.isRequired,
     touchableProps: PropTypes.object,
+    displayKeyboard: PropTypes.func,
     onLongPress: PropTypes.func,
     renderMessageImage: PropTypes.func,
     renderMessageVideo: PropTypes.func,
