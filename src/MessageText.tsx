@@ -66,6 +66,7 @@ export interface MessageTextProps<TMessage extends IMessage> {
   linkStyle?: LeftRightStyle<TextStyle>
   textProps?: TextProps
   customTextStyle?: StyleProp<TextStyle>
+  displayKeyboard?(): void
   parsePatterns?(linkStyle: TextStyle): any
 }
 
